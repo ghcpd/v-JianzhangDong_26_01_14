@@ -1,0 +1,463 @@
+/**
+ * TaskList Component Styles
+ * 
+ * Layout Structure:
+ * - Vertical list of task cards
+ * - Each card uses flexbox for internal layout
+ * - Responsive adjustments for mobile
+ * 
+ * Visual Hierarchy:
+ * - Completed tasks are visually muted
+ * - Overdue tasks have warning indicators
+ * - Clear action button grouping
+ * 
+ * @file src/components/TaskList.css
+ */
+
+/* ============================================
+   TASK LIST SECTION
+   ============================================ */
+
+/**
+ * Section container
+ * White background card with shadow
+ */
+.task-list-section {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  
+  /* Entry animation */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+/**
+ * Header with title and filters
+ * Flexbox for space-between layout
+ */
+.task-list-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/**
+ * Task count badge
+ */
+.task-count {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: var(--spacing-xs);
+}
+
+/* ============================================
+   FILTER BUTTONS
+   ============================================ */
+
+/**
+ * Filter button group container
+ */
+.filter-group {
+  display: flex;
+  gap: var(--spacing-xs);
+  background-color: var(--color-bg-secondary);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-md);
+}
+
+/**
+ * Individual filter button
+ */
+.filter-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+/**
+ * Active filter button state
+ */
+.filter-btn--active {
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   TASK LIST CONTAINER
+   ============================================ */
+
+/**
+ * List container
+ * Vertical stack with gap between cards
+ */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ============================================
+   TASK CARD
+   ============================================ */
+
+/**
+ * Individual task card
+ * Horizontal layout with checkbox, content, and actions
+ */
+.task-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-warning);
+  transition: all var(--transition-fast);
+  
+  /* Entry animation */
+  animation: slideIn 0.3s ease-out;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+
+/**
+ * Completed task styling
+ * Muted appearance with green accent
+ */
+.task-card--completed {
+  border-left-color: var(--color-success);
+  background-color: var(--color-success-light);
+}
+
+.task-card--completed .task-title {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.task-card--completed .task-description {
+  color: var(--color-text-muted);
+}
+
+/**
+ * Overdue task styling
+ * Red accent for urgency
+ */
+.task-card--overdue {
+  border-left-color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+/* ============================================
+   TASK CHECKBOX
+   ============================================ */
+
+/**
+ * Custom checkbox button
+ * Circular checkbox with check icon when completed
+ */
+.task-checkbox {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.task-checkbox:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-accent);
+}
+
+/**
+ * Checked state
+ */
+.task-checkbox--checked {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.task-checkbox--checked:hover {
+  background-color: var(--color-success);
+  opacity: 0.9;
+}
+
+.check-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-inverse);
+}
+
+/* ============================================
+   TASK CONTENT
+   ============================================ */
+
+/**
+ * Main content area
+ * Flexible width to fill available space
+ */
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/**
+ * Task title
+ */
+.task-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: 1.4;
+  
+  /* Handle long titles */
+  word-break: break-word;
+}
+
+/**
+ * Task description
+ */
+.task-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-sm) 0;
+  
+  /* Limit to 2 lines with ellipsis */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/**
+ * Task metadata row
+ * Contains due date and status badges
+ */
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/**
+ * Due date badge
+ */
+.task-due-date {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-sm);
+}
+
+.task-due-date.due-today {
+  color: var(--color-primary);
+  background-color: var(--color-bg-accent);
+}
+
+.task-due-date.overdue {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+.meta-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/**
+ * Status badge
+ */
+.task-status {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pending {
+  color: var(--color-warning);
+  background-color: var(--color-warning-light);
+}
+
+.status-completed {
+  color: var(--color-success);
+  background-color: var(--color-success-light);
+}
+
+/* ============================================
+   TASK ACTIONS
+   ============================================ */
+
+/**
+ * Action buttons container
+ * Vertical stack of icon buttons
+ */
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+/**
+ * Action button base styles
+ */
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/**
+ * Edit button
+ */
+.action-btn--edit {
+  color: var(--color-text-muted);
+}
+
+.action-btn--edit:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg-accent);
+}
+
+/**
+ * Delete button
+ */
+.action-btn--delete {
+  color: var(--color-text-muted);
+}
+
+.action-btn--delete:hover {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+/**
+ * Empty state container
+ * Centered content with illustration
+ */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--color-border);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Mobile adjustments
+ */
+@media (max-width: 768px) {
+  .task-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-card {
+    flex-wrap: wrap;
+  }
+  
+  .task-actions {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border-light);
+  }
+  
+  .task-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

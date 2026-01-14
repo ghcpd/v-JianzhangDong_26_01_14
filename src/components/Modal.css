@@ -1,0 +1,200 @@
+/**
+ * Modal Component Styles
+ * 
+ * Layout Structure:
+ * - Full-screen backdrop overlay
+ * - Centered modal dialog
+ * - Header with title and close button
+ * - Scrollable content area
+ * 
+ * Animation:
+ * - Fade in for backdrop
+ * - Scale + fade for modal content
+ * 
+ * @file src/components/Modal.css
+ */
+
+/* ============================================
+   MODAL BACKDROP
+   ============================================ */
+
+/**
+ * Full-screen overlay backdrop
+ * Semi-transparent dark background
+ */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  /* Flexbox centering for modal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Padding for mobile safe area */
+  padding: var(--spacing-md);
+  
+  /* High z-index to overlay all content */
+  z-index: 1000;
+  
+  /* Fade in animation */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ============================================
+   MODAL CONTAINER
+   ============================================ */
+
+/**
+ * Main modal dialog container
+ * White background with rounded corners
+ */
+.modal {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  
+  /* Sizing constraints */
+  width: 100%;
+  max-width: 500px;
+  max-height: calc(100vh - var(--spacing-xl) * 2);
+  
+  /* Flex layout for header and content */
+  display: flex;
+  flex-direction: column;
+  
+  /* Overflow handling */
+  overflow: hidden;
+  
+  /* Scale + fade animation */
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* ============================================
+   MODAL HEADER
+   ============================================ */
+
+/**
+ * Header section with title and close button
+ */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/**
+ * Modal title
+ */
+.modal-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/**
+ * Close button
+ * Circular button with X icon
+ */
+.modal-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.modal-close:active {
+  transform: scale(0.95);
+}
+
+.modal-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   MODAL CONTENT
+   ============================================ */
+
+/**
+ * Scrollable content area
+ */
+.modal-content {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/**
+ * Scale in animation for modal
+ */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Mobile: Full-width modal at bottom
+ */
+@media (max-width: 480px) {
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+  
+  .modal {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    animation: slideUp 0.3s ease-out;
+  }
+}
+
+/**
+ * Slide up animation for mobile modal
+ */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

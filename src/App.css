@@ -1,0 +1,177 @@
+/**
+ * App Component Styles
+ * 
+ * Layout Structure:
+ * - Full viewport height layout with header and scrollable main content
+ * - Two-column layout on larger screens (dashboard + task list)
+ * - Single column on mobile devices
+ * 
+ * Responsive Breakpoints:
+ * - Mobile: < 768px (single column)
+ * - Tablet: 768px - 1024px (adjusted spacing)
+ * - Desktop: > 1024px (full two-column layout)
+ * 
+ * @file src/App.css
+ */
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+
+/**
+ * Main app container
+ * Uses min-height to ensure full viewport coverage
+ * Background uses secondary color for visual separation from cards
+ */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+
+/**
+ * Main content wrapper
+ * Provides consistent padding and max-width for content
+ * Centers content on larger screens
+ */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  
+  /* 
+   * CSS Grid for responsive two-column layout
+   * Dashboard takes 1fr, task list takes 2fr on desktop
+   */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Tablet breakpoint (768px+)
+ * Introduces two-column layout
+ */
+@media (min-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr 1.5fr;
+    padding: var(--spacing-xl);
+  }
+}
+
+/**
+ * Desktop breakpoint (1024px+)
+ * Increases spacing and adjusts column proportions
+ */
+@media (min-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+  }
+}
+
+/**
+ * Large desktop (1400px+)
+ * Maximum content width with centered alignment
+ */
+@media (min-width: 1400px) {
+  .main-content {
+    padding: var(--spacing-xxl);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/**
+ * Card base styles
+ * Reusable card styling for consistent appearance
+ */
+.card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+}
+
+/**
+ * Section title styling
+ * Used for dashboard and task list headers
+ */
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/**
+ * Icon styling within section titles
+ */
+.section-title-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+/**
+ * Fade in animation for smooth element appearance
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Slide in from right for modal appearance
+ */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Scale in animation for buttons and interactive elements
+ */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

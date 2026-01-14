@@ -1,0 +1,347 @@
+/**
+ * Dashboard Component Styles
+ * 
+ * Layout Structure:
+ * - Sticky positioning on desktop for always-visible stats
+ * - Card-based design with consistent spacing
+ * - Grid layout for stat cards
+ * - Chart section at bottom
+ * 
+ * Color Scheme:
+ * - Blue: Total tasks (#4A90E2)
+ * - Green: Completed tasks (#4CAF50)
+ * - Orange: Pending tasks (#FF9800)
+ * 
+ * @file src/components/Dashboard.css
+ */
+
+/* ============================================
+   DASHBOARD CONTAINER
+   ============================================ */
+
+/**
+ * Main dashboard wrapper
+ * Sticky position keeps dashboard visible while scrolling task list
+ */
+.dashboard {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  
+  /* Sticky positioning for desktop */
+  position: sticky;
+  top: var(--spacing-lg);
+  
+  /* Limit height and allow scrolling if needed */
+  max-height: calc(100vh - 70px - var(--spacing-xl) * 2);
+  overflow-y: auto;
+  
+  /* Smooth entry animation */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================
+   DASHBOARD HEADER
+   ============================================ */
+
+.dashboard-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* ============================================
+   STATISTICS CARDS GRID
+   ============================================ */
+
+/**
+ * Grid container for stat cards
+ * Single column on mobile, adapts on larger screens
+ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/**
+ * Individual stat card
+ * Flexbox layout with icon and content side by side
+ */
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  
+  /* Subtle transition for hover effects */
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/**
+ * Hover effect for stat cards
+ * Subtle lift effect for interactivity feel
+ */
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   STAT CARD COLOR VARIANTS
+   ============================================ */
+
+/**
+ * Blue variant - Total Tasks
+ * Light blue background with primary blue accents
+ */
+.stat-card--blue {
+  background-color: var(--color-bg-accent);
+}
+
+.stat-card--blue .stat-icon-wrapper {
+  background-color: var(--color-primary);
+}
+
+.stat-card--blue .stat-value {
+  color: var(--color-primary);
+}
+
+/**
+ * Green variant - Completed Tasks
+ * Light green background with success green accents
+ */
+.stat-card--green {
+  background-color: var(--color-success-light);
+}
+
+.stat-card--green .stat-icon-wrapper {
+  background-color: var(--color-success);
+}
+
+.stat-card--green .stat-value {
+  color: var(--color-success);
+}
+
+/**
+ * Orange variant - Pending Tasks
+ * Light orange background with warning orange accents
+ */
+.stat-card--orange {
+  background-color: var(--color-warning-light);
+}
+
+.stat-card--orange .stat-icon-wrapper {
+  background-color: var(--color-warning);
+}
+
+.stat-card--orange .stat-value {
+  color: var(--color-warning);
+}
+
+/* ============================================
+   STAT CARD ICON
+   ============================================ */
+
+/**
+ * Icon wrapper circle
+ * Circular background with white icon
+ */
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stat-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-text-inverse);
+}
+
+/* ============================================
+   STAT CARD CONTENT
+   ============================================ */
+
+/**
+ * Content section with value and label
+ * Vertical stack layout
+ */
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/**
+ * Large numeric value
+ * Bold for emphasis
+ */
+.stat-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/**
+ * Descriptive label
+ * Smaller, muted text
+ */
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* ============================================
+   COMPLETION RATE BAR
+   ============================================ */
+
+/**
+ * Completion rate container
+ * Displays progress bar with percentage
+ */
+.completion-rate {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.completion-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/**
+ * Progress bar track
+ * Light gray background
+ */
+.completion-bar {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+/**
+ * Progress bar fill
+ * Animated width based on completion percentage
+ */
+.completion-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
+  border-radius: 4px;
+  transition: width var(--transition-slow);
+}
+
+.completion-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   CHART SECTION
+   ============================================ */
+
+/**
+ * Chart container
+ * White background for clean chart display
+ */
+.chart-container {
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.chart-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+/**
+ * Chart wrapper for proper sizing
+ * Max width prevents chart from being too large
+ */
+.chart-wrapper {
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+/**
+ * Empty state for chart
+ * Displayed when no tasks exist
+ */
+.chart-empty {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Mobile: Remove sticky positioning
+ */
+@media (max-width: 768px) {
+  .dashboard {
+    position: static;
+    max-height: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--spacing-sm);
+  }
+  
+  .stat-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .stat-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .stat-value {
+    font-size: var(--font-size-lg);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    flex-direction: row;
+  }
+}

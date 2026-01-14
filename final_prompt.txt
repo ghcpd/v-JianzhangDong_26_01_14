@@ -1,0 +1,192 @@
+You are a senior frontend engineer. Generate a complete Personal Task Management Dashboard application with all files, tests, and startup scripts, then execute the tests and start the application.
+
+## Role & Objective
+Create a fully functional React-based Task Management Dashboard with automated testing, documentation, and Windows startup scripts. After generation, automatically run tests and start the development server.
+
+## Real-World Use Case
+Personal Task Management Dashboard for daily to-do tasks with the ability to add, edit, complete, and delete tasks, and visualize task statistics.
+
+## Functional Requirements
+Implement the following 5 features:
+1. Add a new task with title, description, and due date
+2. Edit an existing task's details (title, description, due date)
+3. Mark a task as completed or pending
+4. Delete a task
+5. Display a summary dashboard showing total tasks, completed tasks, and pending tasks with visual charts
+
+## Technical Requirements
+
+### Technology Stack
+- Programming language: JavaScript (React)
+- Testing framework: Jest (or Cypress/Playwright)
+- Chart library: Chart.js or similar for data visualization
+
+### UI/UX Design
+- Style: Modern minimalistic design
+- Color scheme: Light blue and white color tone
+- Layout: Clean, visually appealing, responsive
+- Visual hierarchy: Clear and well-defined
+- Alignment: Precise and consistent
+- Documentation: Include detailed comments about fonts, colors, spacing, and layout decisions for UI aesthetics evaluation
+
+## Project Structure
+```
+project-root/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Header.js/css
+│   │   ├── Dashboard.js/css
+│   │   ├── TaskForm.js/css
+│   │   ├── TaskList.js/css
+│   │   └── Modal.js/css
+│   ├── App.js/css
+│   ├── index.js/css
+│   └── setupTests.js
+├── test/
+│   └── auto_test.js
+├── logs/
+│   └── test_run.log (generated)
+├── package.json
+├── start.bat
+├── run_tests.bat
+└── README.md
+```
+
+## Step-by-Step Implementation Instructions
+
+### 1. Create Project Configuration
+- Generate `package.json` with all necessary dependencies (react, react-dom, chart.js, react-chartjs-2, testing-library, jest)
+- Include scripts for start, test, build
+
+### 2. Create HTML Template
+- Generate `public/index.html` with proper meta tags
+- Include Google Fonts for typography
+- Set up root div for React mounting
+
+### 3. Implement React Components
+
+#### Core Application Files
+- `src/index.js`: React entry point with root rendering
+- `src/index.css`: Global styles with CSS variables for colors, spacing, and typography
+- `src/App.js`: Main component with state management for tasks, filter logic, and CRUD operations
+- `src/App.css`: Main application layout styles
+
+#### Component Files (with comprehensive CSS)
+- `Header.js/css`: Application header with gradient design and title
+- `Dashboard.js/css`: Statistics cards and Chart.js doughnut/pie chart visualization
+- `TaskForm.js/css`: Form component for adding/editing tasks with validation
+- `TaskList.js/css`: Task display with filter buttons (All/Pending/Completed) and task cards
+- `Modal.js/css`: Reusable modal dialog with overlay and animations
+
+#### CSS Requirements for All Components
+- Detailed comments explaining font choices (family, size, weight)
+- Color palette documentation (primary, secondary, accent, background)
+- Spacing system documentation (margins, paddings, gaps)
+- Layout strategy notes (flexbox/grid usage, alignment decisions)
+- Responsive breakpoints (mobile: 480px, tablet: 768px, desktop: 1024px)
+- Animation/transition details
+
+### 4. Create Automated Test Suite
+Generate `test/auto_test.js` with comprehensive test coverage:
+
+#### Test Categories (minimum 25+ tests)
+- **Feature 1 Tests (7 tests)**: Add task with valid inputs, validate required fields, test title validation, description validation, due date validation, verify task appears in list, verify stats update
+- **Feature 2 Tests (4 tests)**: Edit existing task, update all fields, verify changes persist, cancel edit
+- **Feature 3 Tests (3 tests)**: Mark task as completed, toggle back to pending, verify stats update
+- **Feature 4 Tests (3 tests)**: Delete task, verify removal from list, verify stats update
+- **Feature 5 Tests (5 tests)**: Display total tasks count, display completed count, display pending count, render chart component, verify calculations
+- **Filter Tests (3 tests)**: Filter all tasks, filter pending only, filter completed only
+- **UI/UX Tests (3 tests)**: Modal open/close, form validation messages, responsive design elements
+
+#### Test Configuration
+- Use Jest with React Testing Library
+- Include `setupTests.js` for test environment configuration
+- Mock Chart.js components to avoid canvas rendering issues in JSDOM
+- Create mocks in `src/__mocks__/` directory for chart.js and react-chartjs-2
+
+#### Test Output
+- Automatically create `logs/` directory if it doesn't exist
+- Write detailed test results to `logs/test_run.log`
+- Include timestamps, test names, pass/fail status, and error details
+- Format output for easy readability
+
+### 5. Create Windows Startup Script
+Generate `start.bat` with the following functionality:
+- Check if node_modules exists, run `npm install` if needed
+- Execute `npm start` to launch development server
+- Automatically open http://localhost:3000 in default browser
+- Display clear status messages during startup
+- Handle errors gracefully with informative messages
+
+### 6. Create Test Execution Script
+Generate `run_tests.bat` with:
+- Create logs directory if missing
+- Run npm test with verbose output
+- Pipe results to `logs/test_run.log`
+- Display results in console simultaneously
+
+### 7. Create Documentation
+Generate `README.md` with complete sections:
+- Project overview and use case description
+- Features list with implementation details for each of the 5 features
+- Technology stack explanation
+- Directory structure overview
+- Installation instructions (if dependencies need manual setup)
+- How to run the application using `start.bat`
+- How to execute tests using `run_tests.bat` or npm test
+- UI design documentation (colors, fonts, layout strategy)
+- Browser compatibility notes
+- Troubleshooting common issues
+
+## Code Quality Standards
+- Clean, readable code with intuitive naming conventions
+- Comprehensive comments explaining logic, especially for:
+  - State management decisions
+  - Event handlers
+  - Validation logic
+  - CSS design choices (fonts, colors, spacing, alignment)
+- Proper component decomposition
+- DRY principles applied
+- Error handling for edge cases
+
+## Output Specification
+All files must be created in the current working directory with the exact structure specified above. Files should be production-ready and immediately executable.
+
+## Execution Workflow
+After generating all files:
+1. Install dependencies: `npm install`
+2. Run automated tests: Execute `npm test` with output to `logs/test_run.log`
+3. Start development server: Execute `npm start`
+4. Open browser to http://localhost:3000
+
+## Quality Gates
+Before considering the task complete:
+- All 5 features are fully implemented and functional
+- All test files pass without errors (minimum 25+ tests passing)
+- Application starts successfully and displays in browser
+- UI is visually polished with documented design decisions
+- README.md provides clear, complete instructions
+- Test logs are generated successfully in logs/test_run.log
+- start.bat and run_tests.bat execute without errors on Windows
+
+## Constraints
+- Target platform: Windows
+- Browser: Modern browsers (Chrome, Firefox, Edge)
+- No external API dependencies
+- Local storage for data persistence (optional but recommended)
+- Must work with default Create React App configuration
+- All dependencies must be installable via npm
+- No manual configuration steps beyond running start.bat
+
+## Critical Implementation Notes
+- Ensure Chart.js is properly mocked in tests to avoid canvas rendering errors in JSDOM
+- Use React Testing Library best practices (queries, user-events, waitFor)
+- Implement proper form validation with user feedback
+- Handle empty states gracefully (no tasks, no completed tasks, etc.)
+- Ensure responsive design works on mobile devices (< 480px width)
+- Use semantic HTML for accessibility
+- Include proper key props for list rendering
+
+Execute all steps completely in a single session. Do not ask for confirmation or additional input. Generate all files, run tests, and start the application.
