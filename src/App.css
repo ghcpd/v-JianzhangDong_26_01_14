@@ -1,0 +1,704 @@
+/**
+ * CSS Styling for Task Management Dashboard
+ * 
+ * Design System:
+ * - Primary Color: Light Blue (#4A90E2, #E3F2FD)
+ * - Secondary Color: White (#FFFFFF)
+ * - Accent Colors: Success Green (#4CAF50), Warning Orange (#FF9800), Error Red (#F44336)
+ * - Font Family: 'Inter' - Modern, clean sans-serif font
+ * - Spacing: 8px base unit (multiples of 8: 8px, 16px, 24px, 32px)
+ * - Border Radius: 12px for cards, 8px for buttons
+ * - Shadows: Soft shadows for depth and elevation
+ */
+
+/* ============================================
+   Global Styles & Reset
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================
+   App Container
+   ============================================ */
+.app {
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* ============================================
+   Header Section
+   Styling for the main application header
+   ============================================ */
+.app-header {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+/* ============================================
+   Main Container
+   Maximum width container for content
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* ============================================
+   Dashboard Section
+   Feature 5: Statistics and visual charts
+   ============================================ */
+.dashboard {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-title {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 24px;
+}
+
+/* Statistics Grid - 3 cards layout */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #F5F7FA 0%, #FFFFFF 100%);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card-total {
+  border-color: #4A90E2;
+}
+
+.stat-card-completed {
+  border-color: #4CAF50;
+}
+
+.stat-card-pending {
+  border-color: #FF9800;
+}
+
+.stat-icon {
+  font-size: 2.5rem; /* 40px */
+  line-height: 1;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  color: #2C3E50;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: #7F8C8D;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Progress Section */
+.progress-section {
+  background: #F8F9FA;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  color: #2C3E50;
+}
+
+.progress-percentage {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  color: #4A90E2;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: #E0E0E0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4A90E2 0%, #357ABD 100%);
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.progress-labels {
+  display: flex;
+  gap: 24px;
+  font-size: 0.875rem; /* 14px */
+}
+
+.progress-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5F6368;
+}
+
+.label-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.completed-dot {
+  background: #4CAF50;
+}
+
+.pending-dot {
+  background: #FF9800;
+}
+
+/* Bar Chart Section */
+.chart-section {
+  margin-top: 24px;
+}
+
+.chart-title {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 16px;
+}
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bar-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bar-label {
+  min-width: 100px;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: #5F6368;
+}
+
+.bar-container {
+  flex: 1;
+  height: 36px;
+  background: #E0E0E0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem; /* 14px */
+  transition: width 0.5s ease;
+  min-width: 40px;
+}
+
+.bar-completed {
+  background: linear-gradient(90deg, #4CAF50 0%, #45A049 100%);
+}
+
+.bar-pending {
+  background: linear-gradient(90deg, #FF9800 0%, #F57C00 100%);
+}
+
+.bar-value {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   Actions Section
+   Button to add new task
+   ============================================ */
+.actions-section {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.btn-add-task {
+  font-size: 1.125rem; /* 18px */
+  padding: 16px 32px;
+}
+
+/* ============================================
+   Task Form
+   Features 1 & 2: Add/Edit task form
+   ============================================ */
+.task-form-container {
+  margin-bottom: 32px;
+}
+
+.task-form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #4A90E2;
+}
+
+.form-title {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.task-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: #F44336;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem; /* 16px */
+  font-family: 'Inter', sans-serif;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.input-error {
+  border-color: #F44336;
+}
+
+.error-message {
+  display: block;
+  color: #F44336;
+  font-size: 0.75rem; /* 12px */
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* ============================================
+   Button Styles
+   Reusable button components
+   ============================================ */
+.btn-primary {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: white;
+  color: #5F6368;
+  border: 2px solid #E0E0E0;
+  padding: 12px 24px;
+  font-size: 1rem; /* 16px */
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #F5F5F5;
+  border-color: #BDBDBD;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.875rem; /* 14px */
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-edit {
+  color: #4A90E2;
+}
+
+.btn-edit:hover {
+  background: #E3F2FD;
+}
+
+.btn-delete {
+  color: #F44336;
+}
+
+.btn-delete:hover {
+  background: #FFEBEE;
+}
+
+/* ============================================
+   Task List
+   Features 3 & 4: Display tasks with actions
+   ============================================ */
+.section-title {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 24px;
+}
+
+.tasks-container {
+  display: grid;
+  gap: 16px;
+}
+
+.task-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #4A90E2;
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateX(4px);
+}
+
+.task-completed {
+  opacity: 0.7;
+  border-left-color: #4CAF50;
+}
+
+.task-overdue {
+  border-left-color: #F44336;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+
+.task-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.task-checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: #4A90E2;
+}
+
+.task-title-main {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  color: #2C3E50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.task-completed .task-title-main {
+  text-decoration: line-through;
+  color: #9E9E9E;
+}
+
+.overdue-badge {
+  background: #F44336;
+  color: white;
+  font-size: 0.625rem; /* 10px */
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  font-size: 0.75rem; /* 12px */
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.status-completed {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-pending {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.task-description {
+  color: #5F6368;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
+  margin-bottom: 16px;
+  padding-left: 36px;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 36px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.task-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #7F8C8D;
+  font-size: 0.875rem; /* 14px */
+}
+
+.date-icon {
+  font-size: 1rem;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ============================================
+   Empty State
+   Displayed when there are no tasks
+   ============================================ */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon {
+  font-size: 4rem; /* 64px */
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  font-size: 1rem; /* 16px */
+  color: #7F8C8D;
+}
+
+/* ============================================
+   Responsive Design
+   Mobile-friendly adjustments
+   ============================================ */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2rem; /* 32px */
+  }
+
+  .app-subtitle {
+    font-size: 1rem; /* 16px */
+  }
+
+  .dashboard {
+    padding: 24px 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .task-form-card {
+    padding: 24px 16px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .task-card {
+    padding: 16px;
+  }
+
+  .task-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+  }
+
+  .task-description {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+
+  .dashboard-title,
+  .section-title,
+  .form-title {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  .bar-label {
+    min-width: 80px;
+    font-size: 0.75rem; /* 12px */
+  }
+}
