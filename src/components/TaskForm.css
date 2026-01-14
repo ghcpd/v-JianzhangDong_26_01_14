@@ -1,0 +1,288 @@
+/**
+ * TaskForm Component Styles
+ * 
+ * Form Layout:
+ * - Single column layout with vertical stacking
+ * - Consistent spacing between form groups (16px)
+ * - Clear visual hierarchy with labels above inputs
+ * 
+ * Input Styling:
+ * - Full-width inputs for maximum usability
+ * - Clear borders with focus states
+ * - Error states with red accents
+ * 
+ * @file src/components/TaskForm.css
+ */
+
+/* ============================================
+   FORM CONTAINER
+   ============================================ */
+
+/**
+ * Main form wrapper
+ * Vertical layout with consistent gap between groups
+ */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   FORM GROUP
+   ============================================ */
+
+/**
+ * Form group container
+ * Wraps label, input, and error message
+ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* ============================================
+   LABELS
+   ============================================ */
+
+/**
+ * Form label styling
+ * Semi-bold weight for clarity
+ */
+.form-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/**
+ * Required field indicator
+ * Red asterisk for visual emphasis
+ */
+.required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ============================================
+   INPUT FIELDS
+   ============================================ */
+
+/**
+ * Base input styling
+ * Clean, modern appearance with subtle border
+ */
+.form-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/**
+ * Input placeholder styling
+ */
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/**
+ * Input focus state
+ * Blue border and subtle shadow
+ */
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+/**
+ * Input hover state
+ */
+.form-input:hover:not(:focus) {
+  border-color: var(--color-primary-light);
+}
+
+/* ============================================
+   TEXTAREA
+   ============================================ */
+
+/**
+ * Textarea specific styling
+ * Same as input with resize handling
+ */
+.form-textarea {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  line-height: 1.5;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.form-textarea:hover:not(:focus) {
+  border-color: var(--color-primary-light);
+}
+
+/* ============================================
+   DATE INPUT STYLING
+   ============================================ */
+
+/**
+ * Date input specific adjustments
+ * Ensure consistent height and appearance
+ */
+input[type="date"].form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 44px;
+}
+
+/* ============================================
+   ERROR STATES
+   ============================================ */
+
+/**
+ * Error state for form group
+ */
+.form-group.has-error .form-input,
+.form-group.has-error .form-textarea {
+  border-color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+.form-group.has-error .form-input:focus,
+.form-group.has-error .form-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.15);
+}
+
+/**
+ * Error message styling
+ */
+.form-error {
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/**
+ * Hint text styling
+ * For character counts and helper text
+ */
+.form-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ============================================
+   FORM ACTIONS
+   ============================================ */
+
+/**
+ * Button container
+ * Right-aligned with gap between buttons
+ */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border-light);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/**
+ * Base button styles
+ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  min-height: 44px;
+}
+
+/**
+ * Primary button (Add/Update)
+ * Blue background with white text
+ */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/**
+ * Secondary button (Cancel)
+ * Gray background with dark text
+ */
+.btn-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/**
+ * Mobile: Full-width buttons stacked
+ */
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: var(--spacing-sm);
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
