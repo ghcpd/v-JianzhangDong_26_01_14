@@ -1,0 +1,13 @@
+{
+  "name": "task-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal Task Management Dashboard sample in React",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/auto_test.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.41.0"
+  }
+}

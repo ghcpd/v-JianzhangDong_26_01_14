@@ -1,0 +1,41 @@
+You are a senior frontend engineer. Please generate a complete UI Case sample according to the following requirements:
+
+1. Real-world Use Case: Personal Task Management Dashboard for daily to-do tasks, with the ability to add, edit, complete, and delete tasks, and visualize task statistics.
+
+2. Functional Requirements: Implement the following 5 features:
+   1. Add a new task with title, description, and due date.
+   2. Edit an existing task's details (title, description, due date).
+   3. Mark a task as completed or pending.
+   4. Delete a task.
+   5. Display a summary dashboard showing total tasks, completed tasks, and pending tasks with visual charts.
+
+3. Technical Requirements:
+   - Programming language: JavaScript (React)
+   - Page style: Modern minimalistic style
+   - Layout should be clean and visually appealing, with an overall color tone of light blue and white.
+   - UI should be aesthetically pleasing, well-aligned, responsive, with clear visual hierarchy.
+   - Include comments or documentation about fonts, colors, spacing, and layout for easier UI aesthetics evaluation.
+
+4. Automated Testing:
+   - Generate a `test/auto_test.js` file using a JavaScript testing framework (e.g., Jest, Cypress, or Playwright).
+   - The test should cover all 5 features and include normal inputs and edge cases.
+   - Test results should be written to `logs/test_run.log`. If the `logs/` directory does not exist, create it automatically.
+   - Output clear, self-explanatory logs.
+
+5. Startup Script:
+   - Generate a `start.bat` file that can start the project on Windows with a single click or command and automatically open the default browser to view the page.
+   - Ensure the startup process is simple, with no hidden dependencies or complex configuration.
+
+6. Documentation:
+   - Generate a `README.md` file containing:
+     - Project overview and real-world use case.
+     - List of features and explanation of how each feature is implemented.
+     - Instructions on how to run `start.bat` to view the UI.
+     - Instructions on how to run `auto_test.js` to execute automated tests.
+     - Any dependency installation or environment requirements (if applicable).
+   - Documentation should be clear and easy to follow so anyone can replicate the setup.
+
+7. Additional Requirements:
+   - Code should be clean, with intuitive naming and complete comments.
+   - UI output and test logs should be self-explanatory.
+   - Use a clear project structure.
